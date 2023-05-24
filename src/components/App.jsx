@@ -8,14 +8,12 @@ import ContactsData from 'components/data/contacts.json';
 
 export const App = () => {
   const [contacts, setContacts] = useState(ContactsData);
+  // const [contacts, setContacts] = useState(() => {
+  //   JSON.parse(localStorage.getItem('contactsList')) ?? ContactsData;
+  // });
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    // const localData = localStorage.getItem('contactsList');
-    // if (localData) {
-    //   setContacts(JSON.parse(localData));
-    // }
-
     if (setContacts !== contacts) {
       localStorage.setItem('contactsList', JSON.stringify(contacts));
     }
