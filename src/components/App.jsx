@@ -7,15 +7,15 @@ import Filter from 'components/filter/filter';
 import ContactsData from 'components/data/contacts.json';
 
 export const App = () => {
-  const [contacts, setContacts] = useState(ContactsData);
-  // const [contacts, setContacts] = useState(() => {
-  //   JSON.parse(localStorage.getItem('contactsList')) ?? ContactsData;
-  // });
+  const [contacts, setContacts] = useState(
+    () =>
+      JSON.parse(window.localStorage.getItem('contactsList')) ?? ContactsData
+  );
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
     if (setContacts !== contacts) {
-      localStorage.setItem('contactsList', JSON.stringify(contacts));
+      window.localStorage.setItem('contactsList', JSON.stringify(contacts));
     }
   }, [contacts]);
 
