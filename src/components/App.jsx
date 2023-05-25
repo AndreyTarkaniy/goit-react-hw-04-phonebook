@@ -37,7 +37,7 @@ export const App = () => {
       number: number,
     };
 
-    setContacts([newContact, ...contacts]);
+    setContacts(prevContacts => [newContact, ...prevContacts]);
   };
 
   const changeFilter = event => {
@@ -52,7 +52,9 @@ export const App = () => {
   };
 
   const deleteContact = contactId => {
-    setContacts(contacts.filter(contact => contactId !== contact.id));
+    setContacts(prevContacts =>
+      prevContacts.filter(contact => contactId !== contact.id)
+    );
   };
 
   const contactsFilter = filterContact();
